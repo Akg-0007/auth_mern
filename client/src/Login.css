@@ -1,0 +1,234 @@
+.SignIn1 {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    width: 100%;
+    min-height: 700px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    z-index: 111;
+  }
+  
+  .RightSide {
+    background-color: rgba(245, 245, 245, 1);
+    width: 100%;
+    height: 700px;
+    position: absolute;
+    left: 588px;
+  }
+  
+  .LeftSide {
+    background-color: rgba(0, 0, 0, 1);
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Board {
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    font-style: normal;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 72px;
+    letter-spacing: 0px;
+    text-decoration: none;
+    text-transform: none;
+    position: absolute;
+    left: 171px;
+  }
+  
+  .LoginForm {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 0px; */
+    box-sizing: border-box;
+    width: 385px;
+    right: 250px;
+    min-height: 356px;
+  }
+  
+  .SignIn2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+  }
+  
+  .span-1 {
+    color: #000;
+    font-size: 36px;
+    font-family: Montserrat;
+    font-weight: 700;
+  }
+  
+  .span-2 {
+    color: #000;
+    font-size: 16px;
+    font-family: Lato;
+  }
+  
+  .google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 26px;
+    margin-bottom: 25px;
+  }
+  
+  .google button {
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFF;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .google button span {
+    padding-left: 10px;
+    color: var(--secondary-text, #858585);
+  text-align: center;
+  font-size: 12px;
+  font-family: Montserrat;
+  }
+  
+  .card-1 {
+    width: 100%;
+    /* min-height: 317px; */
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    /* background: #FFF; */
+    /* padding-top: 30px; */
+  }
+  
+  .email {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  
+  }
+  
+  .email span {
+    color: #000;
+    font-size: 16px;
+    font-family: Lato;
+    margin-bottom: 5px;
+  }
+  
+  .input-margin {
+  
+    width: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  
+  .input-email {
+    width: 325px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    padding-left: 15px;
+    border: none;
+    
+    margin-bottom: 20px;
+  }
+  
+  
+  .email .forget {
+    color: var(--link, #346BD4);
+    font-size: 16px;
+    font-family: Lato;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .email button {
+    width: 100%;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #000;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: Montserrat;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  
+  .dont {
+    margin-top: 20px;
+    color: #858585;
+    text-align: center;
+    font-size: 16px;
+    font-family: Lato;
+  }
+  
+  .dont .span-dont {
+    color: blue;
+    text-align: center;
+    font-size: 16px;
+    font-family: Lato;
+    cursor: pointer;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .SignIn1 {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .RightSide {
+      position: static;
+      width: 100%;
+      height: auto;
+    }
+  
+    .LeftSide {
+      min-height: auto;
+    }
+  
+    .Board {
+      left: 0;
+    }
+  
+    .LoginForm {
+      right: 0;
+    }
+  }
+  
+  
+  
+  @media screen and (max-width: 480px) {
+    .Board {
+      font-size: 48px;
+    }
+  
+    .LoginForm {
+      width: 100%;
+      right: 0;
+    }
+  
+    .input-margin {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
