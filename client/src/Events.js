@@ -1,9 +1,34 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import "./Events.css";
 const Events=()=>{
 	const navigate= useNavigate();
+	const [data,setData] = useState();
+	const getUserDetails = async () => {
+       
+		try {
+			const res = await axios.get('http://localhost:5500/auth/me', {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
+				},
+			})
+			console.log(res)
+			localStorage.setItem('userDetails', JSON.stringify(res.data))
+			setData(res.data)
+	
+		} catch (err) {
+			console.log(err)
+			if (err.request.status === 500) {
+				navigate('/signin')
+			}
+		}
+	}
+	useEffect(()=>{
+		getUserDetails()
+	},[])
+
     return(
         <div>
             <div className="app">
@@ -28,7 +53,7 @@ const Events=()=>{
 		</div>
 		<div className="app-header-actions">
 			<button className="user-profile">
-				<span>Hi_Lolla</span>
+				<span>{data && data.firstname}</span>
 				<span>
 					<img src="https://static-cdn.strpst.com/intro/a/2/5/a25804388ef4b8a8b608b82117589b81" />
 				</span>

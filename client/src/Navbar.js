@@ -3,7 +3,7 @@ import { useState } from "react";
 import Notification from "./Notification";
 import axios from 'axios';
 import { useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
   const [data,setData]=useState();
   const navigate = useNavigate()

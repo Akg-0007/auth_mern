@@ -1,26 +1,26 @@
 import { useRef, useState } from "react";
 // import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import "./Signup.css";
+import "../Signup.css";
 import { Link, useNavigate } from "react-router-dom";
-import { axiosPost } from "../src/Service/AxiosService";
+import { axiosPost } from "../Service/AxiosService";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 
-function Signup() {
+function Productadd() {
   const toast = useToast();
   const toastIdRef = useRef();
   const navigate = useNavigate();
-  // const [showPassword, setShowPassword] = useState(false);
+
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
-    email: "",
-    password: "",
+    category: "",
+    price: "",
   });
 
   const handleSignUp = async () => {
     try {
-      const res = await axios.post("http://localhost:5500/auth/signup", data, {
+      const res = await axios.post("http://localhost:5500/auth/product", data, {
         headers: { "Content-Type": "application/json" },
       });
       console.log(res);
@@ -34,7 +34,7 @@ function Signup() {
           description: "Account created successfully",
           status: "success",
         });
-        navigate("/signin");
+        navigate("/");
         // localStorage.setItem("token", res.data.token)
       }
     } catch (err) {
@@ -50,7 +50,7 @@ function Signup() {
       <div className="LoginForm">
         <div className="card-1">
           <div className="email">
-            <span>First Name </span>
+            <span> Name </span>
           </div>
           <div className="input-margin">
             <input
@@ -64,7 +64,7 @@ function Signup() {
           </div>
 
           <div className="email">
-            <span>Last Name</span>
+            <span>product list</span>
           </div>
           <div className="input-margin">
             <input
@@ -80,7 +80,7 @@ function Signup() {
 
         <div className="card-1">
           <div className="email">
-            <span>Email Address</span>
+            <span>category Address</span>
           </div>
           <div className="input-margin">
             <input
@@ -88,13 +88,13 @@ function Signup() {
               className="input-email"
               id="emailInput"
               placeholder="Enter your email"
-              value={data.email}
-              onChange={(e) => setData({ ...data, email: e.target.value })}
+              value={data.category}
+              onChange={(e) => setData({ ...data, category: e.target.value })}
             />
           </div>
 
           <div className="email">
-            <span>Password</span>
+            <span>price</span>
           </div>
           <div className="input-margin">
             <input
@@ -102,8 +102,8 @@ function Signup() {
               className="input-email"
               id="passwordInput"
               placeholder="Enter your password"
-              value={data.password}
-              onChange={(e) => setData({ ...data, password: e.target.value })}
+              value={data.price}
+              onChange={(e) => setData({ ...data, price: e.target.value })}
             />
           </div>
 
@@ -116,7 +116,7 @@ function Signup() {
 
         <div className="dont">
           <span className="span-dont">
-            <Link to="/signin">Login here </Link>
+            <Link to="/">homme here </Link>
           </span>
         </div>
       </div>
@@ -124,4 +124,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Productadd;

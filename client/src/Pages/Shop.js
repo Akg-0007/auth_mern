@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import "../Events.css";
 const Shop = () => {
-	const navigate= useNavigate();
+  const navigate= useNavigate();
+	const [data,setData] = useState();
+	const getUserDetails = async () => {
+       
+		try {
+			const res = await axios.get('http://localhost:5500/auth/me', {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
+				},
+			})
+			console.log(res)
+			localStorage.setItem('userDetails', JSON.stringify(res.data))
+			setData(res.data)
+	
+		} catch (err) {
+			console.log(err)
+			if (err.request.status === 500) {
+				navigate('/signin')
+			}
+		}
+	}
+	useEffect(()=>{
+		getUserDetails()
+	},[])
   return (
     <div>
       <div className="app">
@@ -24,7 +49,7 @@ const Shop = () => {
           </div>
           <div className="app-header-actions">
             <button className="user-profile">
-              <span>Hi_Lolla</span>
+            <span>{data && data.firstname}</span>
               <span>
                 <img src="https://res.cloudinary.com/dpiatasuq/image/upload/v1699289448/290ebefe615964661a24a80affc90402_j3fmbs.jpg" />
               </span>

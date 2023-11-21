@@ -14,4 +14,9 @@ const signupUser = async (req, res) => {
       res.status(500).send("Error in creating account");
     }
 };
+
+
+
 module.exports = signupUser;
+
+

@@ -16,37 +16,12 @@ connectDatabase()
 
 app.use("/auth", userRoute)
 
-app.post('/demo', (req, res)=>{
-    console.log(req.body, 'hi')
-    res.send(req.body)
-})
+// app.post('/demo', (req, res)=>{
+//     console.log(req.body, 'hi')
+//     res.send(req.body)
+// })
 
 
 app.listen(PORT, () => console.log(`Server started at http://localhost:${PORT}`));
 
-
-// const nodemailer = require("nodemailer");
-
-// const sendMail = async (req, res) => {
-//     let testAccount = await nodemailer.createTestAccount();
-//     res.send('email is sending')
-
-//     let transporter = await nodemailer.createTransport({
-//         host: "smtp.ethereal.email",
-//         port: 587,
-//         auth: {
-//             user: 'shemar80@ethereal.email',
-//             pass: 'JDNBDynCwywr6xe1aS'
-//         }
-//     });
-//     let info = await transporter.sendMail({
-//         from: '"@frontend_edy" <shemar80@ethereal.email>',
-//         to: "lsahu0838@gmail.com",
-//         subject: "Hello edy",
-//         text: "Hello world?",
-//         html: "<b>Hello frontend_edy</b>",
-//     })
-    
-//     console.log("Message sent: %s", info.messageId);
-// }
-// app.get('/sendmail', sendMail)
+ 
