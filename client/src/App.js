@@ -13,9 +13,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Im
 import SignUp from './Pages/SignUp';
 import Home from './Pages/Home';
 // import SignIn from './Pages/SignIn';
-import UpdateProfile from './Pages/UpdateProfile';
+// import UpdateProfile from './Pages/UpdateProfile';
 import Login from './Login';
 import Signup from './SignUp';
+import Posts from './Posts';
 
 function App() {
   useEffect(() => {
@@ -119,12 +120,12 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/signin' element={<Login />} />
-          <Route path='/updateprofile' element={<UpdateProfile />} />
+          {/* <Route path='/updateprofile' element={<UpdateProfile />} /> */}
           <Route path='/events' element={<Events/>}/>
           <Route path='/shop' element={<Shop/>}/>
           <Route path='/games' element={<Games/>}/>
           <Route path='/donate' element={<Donate/>}/>
-          <Route path='home' element={<Home/>}/>
+          <Route path='/post' element={<Posts/>}/>
         </Routes>
       </Router>
     </ChakraProvider>

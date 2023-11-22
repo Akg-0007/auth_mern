@@ -62,9 +62,12 @@ class AuthService {
     }
   };
 
-  createProduct = async (firstname, lastname, category, price) => {
+  createProduct = async (Product,
+    Category,
+    Brand,
+    Price) => {
     try {
-      let existingProduct = await ProductModel.findOne({ category });
+      let existingProduct = await ProductModel.findOne({ Category });
 
       if (existingProduct) {
         return { error: 'Product already exists. .' };
@@ -72,10 +75,10 @@ class AuthService {
 
       // Create the new product here and save it to the database
       const newProduct = new ProductModel({
-        firstname,
-        lastname,
-        category,
-        price,
+        Product,
+        Category,
+        Brand,
+        Price,
       });
 
       await newProduct.save();

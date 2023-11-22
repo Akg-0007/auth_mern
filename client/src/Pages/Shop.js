@@ -8,15 +8,16 @@ const Shop = () => {
 	const getUserDetails = async () => {
        
 		try {
-			const res = await axios.get('http://localhost:5500/auth/me', {
+			const res = await axios.get('http://localhost:5500/auth/createpost/product', {
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${localStorage.getItem("token")}`,
 				},
 			})
-			console.log(res)
-			localStorage.setItem('userDetails', JSON.stringify(res.data))
-			setData(res.data)
+      console.log(res)
+      localStorage.setItem('userDetails', JSON.stringify(res.data))
+      setData(res.data)
+		
 	
 		} catch (err) {
 			console.log(err)
@@ -28,6 +29,7 @@ const Shop = () => {
 	useEffect(()=>{
 		getUserDetails()
 	},[])
+  console.log(data);
   return (
     <div>
       <div className="app">
@@ -49,7 +51,7 @@ const Shop = () => {
           </div>
           <div className="app-header-actions">
             <button className="user-profile">
-            <span>{data && data.firstname}</span>
+            <span>{data && data.Product}</span>
               <span>
                 <img src="https://res.cloudinary.com/dpiatasuq/image/upload/v1699289448/290ebefe615964661a24a80affc90402_j3fmbs.jpg" />
               </span>

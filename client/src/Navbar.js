@@ -56,7 +56,7 @@ console.log(data);
             <a href="#" onClick={()=>navigate("/games")}>Games</a>
             <a href="#" onClick={()=>navigate("/donate")}>Donate</a>
           </div>
-          <div id="icons"onClick={()=>{
+          <div id="icons" onClick={()=>{
                 if(showModal){
                     closeModal();
                 }else{

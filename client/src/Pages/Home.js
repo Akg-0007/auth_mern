@@ -53,7 +53,6 @@ export default function Profile() {
           <Section/>
           <Products/>
           <Posts/>
-          <Productadd/>
           <Footer/>
           
       </div>

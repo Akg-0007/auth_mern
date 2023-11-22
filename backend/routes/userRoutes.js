@@ -10,7 +10,7 @@ const { validateSignupData } = require("../middlewares/userValidation");
 const product = require("../controllers/authentication/product");
 
 router.post("/signup", validateSignupData, signupUser);
-router.post("/product",product);
+router.post("/createpost/product",product);
 router.post("/login", loginUser);
 router.get("/me", auth, userDetails);
 router.put("/updatedetails/:id", auth, updateUserDetails);

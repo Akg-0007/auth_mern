@@ -6,12 +6,12 @@ const AuthService = require('../../services/auth.service')
 const AuthServiceInstance = new AuthService()
 
 const product = async (req, res) => {
-  const { firstname, lastname, category, price } = req.body;
+  const { Product, Brand, Category, Price } = req.body;
 
   try {
     
     const newProduct = await AuthServiceInstance.
-    createProduct(firstname, lastname, category, price);
+    createProduct(Product, Brand, Category, Price);
     res.json(newProduct);
   } catch (err) {
     console.log(err.message);
