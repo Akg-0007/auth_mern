@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import "../Events.css";
 const Shop = () => {
   const navigate= useNavigate();
-	const [data,setData] = useState();
+	const [data,setData] = useState([]);
 	const getUserDetails = async () => {
        
 		try {
-			const res = await axios.get('http://localhost:5500/auth/createpost/product', {
+			const res = await axios.get('http://localhost:5500/auth/getproduct/product', {
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -51,7 +51,7 @@ const Shop = () => {
           </div>
           <div className="app-header-actions">
             <button className="user-profile">
-            <span>{data && data.Product}</span>
+            <span>{data && data[0].Brand}</span>
               <span>
                 <img src="https://res.cloudinary.com/dpiatasuq/image/upload/v1699289448/290ebefe615964661a24a80affc90402_j3fmbs.jpg" />
               </span>

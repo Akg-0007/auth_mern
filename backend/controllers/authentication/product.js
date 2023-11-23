@@ -1,6 +1,5 @@
 
-const ProductService = require('../../services/product.service');
-const ProductServiceInstance = ProductService; 
+const ProductModel = require('../../models/productModel');
 
 const AuthService = require('../../services/auth.service')
 const AuthServiceInstance = new AuthService()
@@ -19,4 +18,14 @@ const product = async (req, res) => {
   }
 };
 
-module.exports = product;
+const getAllproduct = async(req,res)=>{
+ try{
+  const products = await ProductModel.find({});
+  res.status(200).json(products);
+ }
+ catch(err){
+res.status(400).json({message: "not able to find products"});
+ }
+}
+
+module.exports = {product,getAllproduct};

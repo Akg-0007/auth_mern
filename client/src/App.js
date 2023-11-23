@@ -126,6 +126,7 @@ function App() {
           <Route path='/games' element={<Games/>}/>
           <Route path='/donate' element={<Donate/>}/>
           <Route path='/post' element={<Posts/>}/>
+          <Route path='/Home' element={<Home/>}/>
         </Routes>
       </Router>
     </ChakraProvider>

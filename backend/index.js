@@ -16,10 +16,10 @@ connectDatabase()
 
 app.use("/auth", userRoute)
 
-// app.post('/demo', (req, res)=>{
-//     console.log(req.body, 'hi')
-//     res.send(req.body)
-// })
+app.post('/demo', (req, res)=>{
+    console.log(req.body, 'hi')
+    res.send(req.body)
+})
 
 
 app.listen(PORT, () => console.log(`Server started at http://localhost:${PORT}`));
