@@ -1,0 +1,30 @@
+.col-1{
+    /* background-color: red; */
+}
+
+.post-pop{
+    background-image: url("https://res.cloudinary.com/dpiatasuq/image/upload/v1700757646/afc816c19424a11c6d341c698f6d2c54_rt6juj.jpg");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   width: 100%;
+   height: 100vh;
+}
+
+
+
+  .hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+  }
+  
+  .child:hover .hover-text {
+    display: block;
+  }
+  

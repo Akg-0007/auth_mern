@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-// import "../Signup.css";
+import "../Pages/Post.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
@@ -33,7 +33,7 @@ const Popup = () => {
             status: "success",
           });
           navigate("/shop");
-          // localStorage.setItem("token", res.data.token)
+          
         }
       } catch (err) {
         toastIdRef.current = toast({ description: err.message, status: "error" });
@@ -43,7 +43,7 @@ const Popup = () => {
     
 
   return (
-    <div className="system">
+    <div className="system post-pop">
       <div className="notification">
       <div>
     
@@ -112,7 +112,7 @@ const Popup = () => {
        
 
        <div className="dont">
-         <span className="span-dont" onClick={()=>navigate('/post')}>
+         <span className="span-dont" onClick={()=>navigate('/')}>
            Home Page  
          </span>
    </div>

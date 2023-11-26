@@ -49,14 +49,16 @@ const Shop = () => {
               <a href="#">Overview</a>
             </div>
           </div>
-          <div className="app-header-actions">
-            <button className="user-profile">
-            <span>{data && data[0].Brand}</span>
-              <span>
-                <img src="https://res.cloudinary.com/dpiatasuq/image/upload/v1699289448/290ebefe615964661a24a80affc90402_j3fmbs.jpg" />
-              </span>
-            </button>
-          </div>
+          
+                    <div className="app-header-actions">
+                    <button className="user-profile">
+                    <span>hell</span>
+                      <span>
+                        <img src="https://res.cloudinary.com/dpiatasuq/image/upload/v1699289448/290ebefe615964661a24a80affc90402_j3fmbs.jpg" />
+                      </span>
+                    </button>
+                  </div>
+
         </header>
         <div className="app-body">
           <div className="app-body-navigation">
@@ -96,53 +98,25 @@ const Shop = () => {
               <div className="mobile-only">
                 <button className="flat-button">Toggle search</button>
               </div>
+              { data && data.map((e)=>
               <div className="tiles">
-                <article className="tile">
-                  <div className="tile-header">
-                    <i className="ph-lightning-light"></i>
-                    <h3>
-                      <span>Electricity</span>
-                      <span>UrkEnergo LTD.</span>
-                    </h3>
-                  </div>
-                  <a href="#">
-                    <span>Go to service</span>
-                    <span className="icon-button">
-                      <i className="ph-caret-right-bold"></i>
-                    </span>
-                  </a>
-                </article>
-                <article className="tile">
-                  <div className="tile-header">
-                    <i className="ph-fire-simple-light"></i>
-                    <h3>
-                      <span>Heating Gas</span>
-                      <span>Gazprom UA</span>
-                    </h3>
-                  </div>
-                  <a href="#">
-                    <span>Go to service</span>
-                    <span className="icon-button">
-                      <i className="ph-caret-right-bold"></i>
-                    </span>
-                  </a>
-                </article>
                 <article className="tile">
                   <div className="tile-header">
                     <i className="ph-file-light"></i>
                     <h3>
-                      <span>Tax online</span>
-                      <span>Kharkov 62 str.</span>
+                    <span>{e.Brand}</span>
                     </h3>
                   </div>
                   <a href="#">
-                    <span>Go to service</span>
+                  <span>{e.Product}</span>
+                  <span>{e.Price}</span>
                     <span className="icon-button">
                       <i className="ph-caret-right-bold"></i>
                     </span>
                   </a>
-                </article>
-              </div>
+                </article> 
+                
+              </div>)}
             </section>
             <section className="transfer-section">
               <div className="transfer-section-header">

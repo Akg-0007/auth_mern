@@ -1,11 +1,13 @@
 import React from "react";
+import video from "../src/mahira.mp4";
 const Products = ()=>{
     return(
         <div id="page2">
         <div id="elem1" className="elem">
-            <img data-scroll data-scroll-speed="1"
+            {/* <img data-scroll data-scroll-speed="1"
                 src="https://res.cloudinary.com/dpiatasuq/image/upload/v1692574055/p3_swtcll.png"
-                alt=""/>
+                alt=""/> */}
+                 <video autoPlay loop muted  src={video}></video>
             <div data-scroll data-scroll-speed="-2" className="dets">
             <span>Mya khalifa</span>
             </div>
