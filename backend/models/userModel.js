@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const productModel = require('./productModel');
 
 const UserSchema = mongoose.Schema({
     firstname:{
@@ -26,6 +27,13 @@ const UserSchema = mongoose.Schema({
         required: [true, ""],
         default: "https://res.cloudinary.com/dpiatasuq/image/upload/v1699162619/WhatsApp_Image_2023-11-05_at_11.06.06_AM_prdly3.jpg",
     }
+    ,
+    posts:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"product"
+        }
+    ]
 })
 
 module.exports = mongoose.model("user", UserSchema);

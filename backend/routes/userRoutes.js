@@ -17,8 +17,13 @@ router.post("/createpost/product",product.product);
 
 router.get("/getproduct/product",product.getAllproduct);
 
+router.post("/upload/image",product.uploadImage);
+router.get("/getimage/image",product.getAllImage);
+
 router.post("/login", loginUser);
 router.get("/me", auth, userDetails);
-router.put("/updatedetails/:id", auth, updateUserDetails);
+
+// router.put("/updatedetails/:id", auth, updateUserDetails);
+
 
 module.exports = router;

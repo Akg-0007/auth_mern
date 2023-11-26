@@ -8,15 +8,16 @@ const Events=()=>{
 	const getUserDetails = async () => {
        
 		try {
-			const res = await axios.get('http://localhost:5500/auth/me', {
+			const res = await axios.get('http://localhost:5500/auth/getimage/image', {
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${localStorage.getItem("token")}`,
 				},
 			})
-			console.log(res)
-			localStorage.setItem('userDetails', JSON.stringify(res.data))
-			setData(res.data)
+      console.log(res)
+      localStorage.setItem('userDetails', JSON.stringify(res.data))
+      setData(res.data)
+		
 	
 		} catch (err) {
 			console.log(err)
@@ -53,9 +54,9 @@ const Events=()=>{
 		</div>
 		<div className="app-header-actions">
 			<button className="user-profile">
-				<span>{data && data.firstname}</span>
+				<span>{data && data[0].author}</span>
 				<span>
-					<img src="https://static-cdn.strpst.com/intro/a/2/5/a25804388ef4b8a8b608b82117589b81" />
+					<img src={data && data[0].image_url} />
 				</span>
 			</button>
 			
@@ -261,10 +262,7 @@ const Events=()=>{
 				<div className="payments">
 					<div className="payment">
 						<div className="card green">
-							<span>01/22</span>
-							<span>
-								•••• 4012
-							</span>
+						<img src={data && data[1].image_url} />
 						</div>
 						<div className="payment-details">
 							<h3>Internet</h3>
@@ -278,10 +276,7 @@ const Events=()=>{
 					</div>
 					<div className="payment">
 						<div className="card olive">
-							<span>12/23</span>
-							<span>
-								•••• 2228
-							</span>
+						<img src={data && data[2].image_url}/>
 						</div>
 						<div className="payment-details">
 							<h3>Universal</h3>

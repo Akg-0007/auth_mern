@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const ProductModel = require('../models/productModel');
+const uploadModel = require('../models/uploadModel');
 class AuthService {
   signup = async (firstname, lastname, email, password) => {
     try {
@@ -67,7 +68,7 @@ class AuthService {
     Brand,
     Price) => {
     try {
-      let existingProduct = await ProductModel.findOne({ Category });
+      let existingProduct = await ProductModel.findOne({Category});
 
       if (existingProduct) {
         return { error: 'Product already exists. .' };
@@ -89,6 +90,61 @@ class AuthService {
       return { error: 'Error in creating product' };
     }
   }
+
+  // createProduct = async (Product,
+  //   Category,
+  //   Brand,
+  //   Price) => {
+  //   try {
+  //     let existingProduct = await ProductModel.findOne({});
+
+  //     if (existingProduct) {
+  //       return { error: 'Product already exists. .' };
+  //     }
+
+  //     // Create the new product here and save it to the database
+  //     const newProduct = new ProductModel({
+  //       Product,
+  //       Category,
+  //       Brand,
+  //       Price,
+  //     });
+
+  //     await newProduct.save();
+
+  //     return { success: 'Product created successfully.' };
+  //   } catch (err) {
+  //     console.error(err.message);
+  //     return { error: 'Error in creating product' };
+  //   }
+  // }
+
+
+  uploadImage = async (image_url,author) => {
+    try {
+      // Assuming you have a field named 'image_url' in your database schema
+      let existingProduct = await uploadModel.findOne({ image_url,author });
+  
+      if (existingProduct) {
+        return { error: 'Image already exists.' };
+      }
+  
+      // Create the new product here and save it to the database
+      const uploadImage = new uploadModel({
+        image_url,author,
+      });
+  
+      await uploadImage.save();
+  
+      return { success: 'Image created successfully.' };
+    } catch (err) {
+      console.error(err.message);
+      return { error: 'Error in creating image' };
+    }
+ 
+  };
+
+  
  
   generateToken = (userId) => {
     const payload = {

@@ -141,7 +141,7 @@ useEffect(() => {
         <div>
           {/* <img src={eye} alt="eye" /> */}
         </div>
-        <div className="view-all-btn" onClick={handleLogout}>View All</div>
+        <div className="view-all-btn" onClick={handleLogout}>LOG OUT</div>
       </div>
     </div>
     </div>

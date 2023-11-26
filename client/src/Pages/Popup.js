@@ -3,6 +3,7 @@ import "../Pages/Post.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
+import Upload from "./Upload";
 
 const Popup = () => {
     const toast = useToast();
@@ -103,11 +104,14 @@ const Popup = () => {
              onChange={(e) => setData({ ...data, Brand: e.target.value })}
            />
          </div>
+         <div className="input-margin">
+         <Upload/>
+         </div>
 
         
 
          <div className="email">
-           <button onClick={handleSignUp}>Sign Up</button>
+           <button onClick={handleSignUp}>Post Product</button>
          </div>
        
 
