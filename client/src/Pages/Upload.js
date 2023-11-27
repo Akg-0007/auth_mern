@@ -78,7 +78,10 @@ const Upload = () => {
     <div>
       <input
         type="file"
-        className="m-24 options"
+   
+             className="input-email"
+             id="passwordInput"
+             placeholder="Enter your text"
         name="image_url"
         onChange={handleImageupload}
         required
@@ -95,10 +98,12 @@ const Upload = () => {
            />
          </div>
 
+         <div className="save-it">
             <button onClick={handleSave} disabled={imageUrl.length === 0 || loading}>
-        Save
+        Post Image
       </button>
-      {loading && <p>Uploading...</p>}
+      </div>
+      {loading && <p>Hang On Image is being uploaded ...</p>}
     </div>
   );
 };

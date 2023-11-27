@@ -5,7 +5,7 @@ import "./Events.css";
 const Events=()=>{
 	const navigate= useNavigate();
 	const [data,setData] = useState();
-	const getUserDetails = async () => {
+	const getimage = async () => {
        
 		try {
 			const res = await axios.get('http://localhost:5500/auth/getimage/image', {
@@ -27,8 +27,35 @@ const Events=()=>{
 		}
 	}
 	useEffect(()=>{
+		getimage()
+	},[])
+
+	const getUserDetails = async () => {
+       
+		try {
+			const res = await axios.get('http://localhost:5500/auth/getproduct/product', {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
+				},
+			})
+      console.log(res)
+      localStorage.setItem('userDetails', JSON.stringify(res.data))
+      setData(res.data)
+		
+	
+		} catch (err) {
+			console.log(err)
+			if (err.request.status === 500) {
+				navigate('/signin')
+			}
+		}
+	}
+	useEffect(()=>{
 		getUserDetails()
 	},[])
+	
+  console.log(data);
 
     return(
         <div>
@@ -56,7 +83,7 @@ const Events=()=>{
 			<button className="user-profile">
 				<span>{data && data[0].author}</span>
 				<span>
-					<img src={data && data[0].image_url} />
+					{/* <img src={data && data[0].image_url} /> */}
 				</span>
 			</button>
 			
@@ -107,54 +134,24 @@ const Events=()=>{
 						Toggle search
 					</button>
 				</div>
-				<div className="tiles">
-					<article className="tile">
-						<div className="tile-header">
-							<i className="ph-lightning-light"></i>
-							<h3>
-								<span>Electricity</span>
-								<span>UrkEnergo LTD.</span>
-							</h3>
-						</div>
-						<a href="#">
-							<span>Go to service</span>
-							<span className="icon-button">
-								<i className="ph-caret-right-bold"></i>
-							</span>
-						</a>
-					</article>
-					<article className="tile">
-						<div className="tile-header">
-							<i className="ph-fire-simple-light"></i>
-							<h3>
-								<span>Heating Gas</span>
-								<span>Gazprom UA</span>
-							</h3>
-						</div>
-						<a href="#">
-							<span>Go to service</span>
-							<span className="icon-button">
-								<i className="ph-caret-right-bold"></i>
-							</span>
-						</a>
-					</article>
-					<article className="tile">
-						<div className="tile-header">
-							<i className="ph-file-light"></i>
-							<h3>
-								<span>Tax online</span>
-								<span>Kharkov 62 str.</span>
-							</h3>
-						</div>
-						<a href="#">
-							<span>Go to service</span>
-							<span className="icon-button">
-								<i className="ph-caret-right-bold"></i>
-							</span>
-						</a>
-					</article>
+				{ data && data.map((e)=>
+				<div className="posted-fetch">
+				<div className="fetched-image">
+					<img src={e.image_url}/></div>
+				<div className="fetched-data">
+				<span>{e.Brand}</span>
+					<span>
+						{e.Product}
+					</span>
+					<span>
+						Category
+					</span>
+					<span>
+						Price
+					</span>
 				</div>
-				
+				</div>
+				)}
 			</section>
 			<section className="transfer-section">
 				<div className="transfer-section-header">
@@ -262,7 +259,7 @@ const Events=()=>{
 				<div className="payments">
 					<div className="payment">
 						<div className="card green">
-						<img src={data && data[1].image_url} />
+						{/* <img src={data && data[1].image_url} /> */}
 						</div>
 						<div className="payment-details">
 							<h3>Internet</h3>
@@ -276,7 +273,7 @@ const Events=()=>{
 					</div>
 					<div className="payment">
 						<div className="card olive">
-						<img src={data && data[2].image_url}/>
+						{/* <img src={data && data[2].image_url}/> */}
 						</div>
 						<div className="payment-details">
 							<h3>Universal</h3>

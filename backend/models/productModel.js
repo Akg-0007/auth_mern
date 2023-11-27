@@ -19,6 +19,13 @@ const ProductSchema =new mongoose.Schema({
         required: true,
     }
     ,
+    // image_url: [{
+    //     type: String
+    //   }],
+    //   author: {
+    //     type: String,
+    //     required: true,
+    //   },
     User:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"product"

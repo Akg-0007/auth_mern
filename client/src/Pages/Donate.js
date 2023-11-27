@@ -63,31 +63,30 @@ const Donate=()=>{
 
 	</header>
 	<div className="app-body">
-		<div className="app-body-navigation">
-			<nav className="navigation">
-				<a href="#">
-					<i className="ph-browsers"></i>
-					<span>Dashboard</span>
-				</a>
-				<a href="#">
-					<i className="ph-check-square"></i>
-					<span>Scheduled</span>
-				</a>
-				<a href="#">
-					<i className="ph-swap"></i>
-					<span>Instagram</span>
-				</a>
-				<a href="#">
-					<i className="ph-file-text"></i>
-					<span>Youtube</span>
-				</a>
-				<a href="#">
-					<i className="ph-globe"></i>
-					<span>Contact</span>
-				</a>	
-			</nav>
-
-		</div>
+	<div className="app-body-navigation">
+            <nav className="navigation">
+              <a href="#">
+                <i className="ph-browsers"></i>
+                <span  onClick={()=> navigate("/Home")}>Dashboard</span>
+              </a>
+              <a href="#">
+                <i className="ph-check-square"></i>
+                <span onClick={()=> navigate("/Home")}>Scheduled</span>
+              </a>
+              <a href="#">
+                <i className="ph-swap"></i>
+                <span onClick={()=> navigate("/Home")}>Instagram</span>
+              </a>
+              <a href="#">
+                <i className="ph-file-text"></i>
+                <span onClick={()=> navigate("/Home")}>Youtube</span>
+              </a>
+              <a href="#">
+                <i className="ph-globe"></i>
+                <span onClick={()=> navigate("/Home")}>Contact</span>
+              </a>
+            </nav>
+          </div>
 		<div className="app-body-main-content">
 			<section className="service-section">
 				<h2>Service</h2>
@@ -105,13 +104,14 @@ const Donate=()=>{
 						Toggle search
 					</button>
 				</div>
-				<div className="tiles">
-					<article className="tile">
+				 {/* <div className="tiles">
+					
+				<article className="tile">
 						<div className="tile-header">
-							<i className="ph-lightning-light"></i>
+							<i className="ph-fire-simple-light"></i>
 							<h3>
-								<span>Electricity</span>
-								<span>UrkEnergo LTD.</span>
+								<span>Heating Gas</span>
+								<span>Gazprom UA</span>
 							</h3>
 						</div>
 						<a href="#">
@@ -151,6 +151,23 @@ const Donate=()=>{
 							</span>
 						</a>
 					</article>
+				</div>  */}
+				<div className="posted-fetch">
+				<div className="fetched-image"><img src="https://static-cdn.strpst.com/intro/a/2/5/a25804388ef4b8a8b608b82117589b81" /></div>
+				<div className="fetched-data">
+					<span>
+						Product Name
+					</span>
+					<span>
+						Brand
+					</span>
+					<span>
+						Category
+					</span>
+					<span>
+						Price
+					</span>
+				</div>
 				</div>
 				
 			</section>
