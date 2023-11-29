@@ -5,6 +5,7 @@ import "./Events.css";
 const Events=()=>{
 	const navigate= useNavigate();
 	const [data,setData] = useState();
+	const [imagedata,setimagedata] = useState();
 	const getimage = async () => {
        
 		try {
@@ -41,7 +42,7 @@ const Events=()=>{
 			})
       console.log(res)
       localStorage.setItem('userDetails', JSON.stringify(res.data))
-      setData(res.data)
+      setimagedata(res.data)
 		
 	
 		} catch (err) {
@@ -56,6 +57,7 @@ const Events=()=>{
 	},[])
 	
   console.log(data);
+  console.log(imagedata); 
 
     return(
         <div>
@@ -83,7 +85,7 @@ const Events=()=>{
 			<button className="user-profile">
 				<span>{data && data[0].author}</span>
 				<span>
-					{/* <img src={data && data[0].image_url} /> */}
+					<img src={data && data[0].image_url} />
 				</span>
 			</button>
 			
@@ -93,28 +95,28 @@ const Events=()=>{
 	</header>
 	<div className="app-body">
 		<div className="app-body-navigation">
-			<nav className="navigation">
-				<a href="#">
-					<i className="ph-browsers"></i>
-					<span>Dashboard</span>
-				</a>
-				<a href="#">
-					<i className="ph-check-square"></i>
-					<span>Scheduled</span>
-				</a>
-				<a href="#">
-					<i className="ph-swap"></i>
-					<span>Instagram</span>
-				</a>
-				<a href="#">
-					<i className="ph-file-text"></i>
-					<span>Youtube</span>
-				</a>
-				<a href="#">
-					<i className="ph-globe"></i>
-					<span>Contact</span>
-				</a>	
-			</nav>
+		<nav className="navigation">
+              <a href="#">
+                <i className="ph-browsers"></i>
+                <span  onClick={()=> navigate("/Home")}>Dashboard</span>
+              </a>
+              <a href="#">
+                <i className="ph-check-square"></i>
+                <span onClick={()=> navigate("/Home")}>Scheduled</span>
+              </a>
+              <a href="#">
+                <i className="ph-swap"></i>
+                <span onClick={()=> navigate("/Home")}>Instagram</span>
+              </a>
+              <a href="#">
+                <i className="ph-file-text"></i>
+                <span onClick={()=> navigate("/Home")}>Youtube</span>
+              </a>
+              <a href="#">
+                <i className="ph-globe"></i>
+                <span onClick={()=> navigate("/Home")}>Contact</span>
+              </a>
+            </nav>
 
 		</div>
 		<div className="app-body-main-content">
@@ -134,24 +136,36 @@ const Events=()=>{
 						Toggle search
 					</button>
 				</div>
-				{ data && data.map((e)=>
-				<div className="posted-fetch">
-				<div className="fetched-image">
-					<img src={e.image_url}/></div>
-				<div className="fetched-data">
-				<span>{e.Brand}</span>
-					<span>
-						{e.Product}
-					</span>
-					<span>
-						Category
-					</span>
-					<span>
-						Price
-					</span>
-				</div>
-				</div>
-				)}
+				
+				
+
+
+{data && data.map((e, i) => (
+  <main key={i}>
+    <div className="card-2">
+	
+      <img src={e.image_url} alt="" />
+      <div className="card-content">
+	  
+        <h2>{imagedata && imagedata[i].Product}</h2>
+        <p>{imagedata && imagedata[i].Category}</p>
+		
+        <a href="#" className="button">
+          {imagedata && imagedata[i].Brand}
+          <br />
+		
+          <span className="material-symbols-outlined">
+            {imagedata && imagedata[i].Price}
+          </span>
+		
+        </a>
+      </div>
+    </div>
+  </main>
+))}
+
+
+				
 			</section>
 			<section className="transfer-section">
 				<div className="transfer-section-header">

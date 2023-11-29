@@ -5,18 +5,45 @@ import "../Events.css";
 const Games=()=>{
 	const navigate= useNavigate();
 	const [data,setData] = useState();
-	const getUserDetails = async () => {
+	const [imagedata,setimagedata] = useState();
+	const getimage = async () => {
        
 		try {
-			const res = await axios.get('http://localhost:5500/auth/me', {
+			const res = await axios.get('http://localhost:5500/auth/getimage/image', {
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${localStorage.getItem("token")}`,
 				},
 			})
-			console.log(res)
-			localStorage.setItem('userDetails', JSON.stringify(res.data))
-			setData(res.data)
+      console.log(res)
+      localStorage.setItem('userDetails', JSON.stringify(res.data))
+      setData(res.data)
+		
+	
+		} catch (err) {
+			console.log(err)
+			if (err.request.status === 500) {
+				navigate('/signin')
+			}
+		}
+	}
+	useEffect(()=>{
+		getimage()
+	},[])
+
+	const getUserDetails = async () => {
+       
+		try {
+			const res = await axios.get('http://localhost:5500/auth/getproduct/product', {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
+				},
+			})
+      console.log(res)
+      localStorage.setItem('userDetails', JSON.stringify(res.data))
+      setimagedata(res.data)
+		
 	
 		} catch (err) {
 			console.log(err)
@@ -28,6 +55,10 @@ const Games=()=>{
 	useEffect(()=>{
 		getUserDetails()
 	},[])
+	
+  console.log(data);
+  console.log(imagedata); 
+
     return(
         <div>
             <div className="app">
@@ -38,7 +69,7 @@ const Games=()=>{
 					<img src="https://pbs.twimg.com/profile_images/1499265096006000640/ZhEnSTch_400x400.jpg" />
 				</span>
 				<h1 className="logo-title">
-					<span>GAMES</span>
+					<span>BGMI</span>
 				</h1>
 			</div>
 		</div>
@@ -52,9 +83,9 @@ const Games=()=>{
 		</div>
 		<div className="app-header-actions">
 			<button className="user-profile">
-			<span>{data && data.firstname}</span>
+				<span>{data && data[0].author}</span>
 				<span>
-					<img src="https://static-cdn.strpst.com/intro/a/2/5/a25804388ef4b8a8b608b82117589b81" />
+					<img src={data && data[0].image_url} />
 				</span>
 			</button>
 			
@@ -64,28 +95,28 @@ const Games=()=>{
 	</header>
 	<div className="app-body">
 		<div className="app-body-navigation">
-			<nav className="navigation">
-				<a href="#">
-					<i className="ph-browsers"></i>
-					<span>Dashboard</span>
-				</a>
-				<a href="#">
-					<i className="ph-check-square"></i>
-					<span>Scheduled</span>
-				</a>
-				<a href="#">
-					<i className="ph-swap"></i>
-					<span>Instagram</span>
-				</a>
-				<a href="#">
-					<i className="ph-file-text"></i>
-					<span>Youtube</span>
-				</a>
-				<a href="#">
-					<i className="ph-globe"></i>
-					<span>Contact</span>
-				</a>	
-			</nav>
+		<nav className="navigation">
+              <a href="#">
+                <i className="ph-browsers"></i>
+                <span  onClick={()=> navigate("/Home")}>Dashboard</span>
+              </a>
+              <a href="#">
+                <i className="ph-check-square"></i>
+                <span onClick={()=> navigate("/Home")}>Scheduled</span>
+              </a>
+              <a href="#">
+                <i className="ph-swap"></i>
+                <span onClick={()=> navigate("/Home")}>Instagram</span>
+              </a>
+              <a href="#">
+                <i className="ph-file-text"></i>
+                <span onClick={()=> navigate("/Home")}>Youtube</span>
+              </a>
+              <a href="#">
+                <i className="ph-globe"></i>
+                <span onClick={()=> navigate("/Home")}>Contact</span>
+              </a>
+            </nav>
 
 		</div>
 		<div className="app-body-main-content">
@@ -105,53 +136,35 @@ const Games=()=>{
 						Toggle search
 					</button>
 				</div>
-				<div className="tiles">
-					<article className="tile">
-						<div className="tile-header">
-							<i className="ph-lightning-light"></i>
-							<h3>
-								<span>Electricity</span>
-								<span>UrkEnergo LTD.</span>
-							</h3>
-						</div>
-						<a href="#">
-							<span>Go to service</span>
-							<span className="icon-button">
-								<i className="ph-caret-right-bold"></i>
-							</span>
-						</a>
-					</article>
-					<article className="tile">
-						<div className="tile-header">
-							<i className="ph-fire-simple-light"></i>
-							<h3>
-								<span>Heating Gas</span>
-								<span>Gazprom UA</span>
-							</h3>
-						</div>
-						<a href="#">
-							<span>Go to service</span>
-							<span className="icon-button">
-								<i className="ph-caret-right-bold"></i>
-							</span>
-						</a>
-					</article>
-					<article className="tile">
-						<div className="tile-header">
-							<i className="ph-file-light"></i>
-							<h3>
-								<span>Tax online</span>
-								<span>Kharkov 62 str.</span>
-							</h3>
-						</div>
-						<a href="#">
-							<span>Go to service</span>
-							<span className="icon-button">
-								<i className="ph-caret-right-bold"></i>
-							</span>
-						</a>
-					</article>
-				</div>
+				
+				
+
+
+{data && data.map((e, i) => (
+  <main key={i}>
+    <div className="card-2">
+	
+      <img src={e.image_url} alt="" />
+      <div className="card-content">
+	  
+        <h2>{imagedata && imagedata[i].Product}</h2>
+        <p>{imagedata && imagedata[i].Category}</p>
+		
+        <a href="#" className="button">
+          {imagedata && imagedata[i].Brand}
+          <br />
+		
+          <span className="material-symbols-outlined">
+            {imagedata && imagedata[i].Price}
+          </span>
+		
+        </a>
+      </div>
+    </div>
+  </main>
+))}
+
+
 				
 			</section>
 			<section className="transfer-section">
@@ -260,10 +273,7 @@ const Games=()=>{
 				<div className="payments">
 					<div className="payment">
 						<div className="card green">
-							<span>01/22</span>
-							<span>
-								•••• 4012
-							</span>
+						{/* <img src={data && data[1].image_url} /> */}
 						</div>
 						<div className="payment-details">
 							<h3>Internet</h3>
@@ -277,10 +287,7 @@ const Games=()=>{
 					</div>
 					<div className="payment">
 						<div className="card olive">
-							<span>12/23</span>
-							<span>
-								•••• 2228
-							</span>
+						{/* <img src={data && data[2].image_url}/> */}
 						</div>
 						<div className="payment-details">
 							<h3>Universal</h3>
