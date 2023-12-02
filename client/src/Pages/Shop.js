@@ -96,23 +96,23 @@ const Shop = () => {
 	<div className="app-body">
 		<div className="app-body-navigation">
 		<nav className="navigation">
-              <a href="#">
+              <a href="">
                 <i className="ph-browsers"></i>
                 <span  onClick={()=> navigate("/Home")}>Dashboard</span>
               </a>
-              <a href="#">
+              <a href="">
                 <i className="ph-check-square"></i>
                 <span onClick={()=> navigate("/Home")}>Scheduled</span>
               </a>
-              <a href="#">
+              <a href="">
                 <i className="ph-swap"></i>
                 <span onClick={()=> navigate("/Home")}>Instagram</span>
               </a>
-              <a href="#">
+              <a href="">
                 <i className="ph-file-text"></i>
                 <span onClick={()=> navigate("/Home")}>Youtube</span>
               </a>
-              <a href="#">
+              <a href="">
                 <i className="ph-globe"></i>
                 <span onClick={()=> navigate("/Home")}>Contact</span>
               </a>
