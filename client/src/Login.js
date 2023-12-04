@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate()
   const handleSignIn = async()=>{
     try{
-      const res = await axios.post('http://localhost:5500/auth/login',
+      const res = await axios.post('https://scoutverse.onrender.com/auth/login',
       data,{
         headers:{"content-type":"application/json"}
       })

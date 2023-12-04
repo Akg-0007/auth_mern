@@ -20,7 +20,7 @@ function Signup() {
 
   const handleSignUp = async () => {
     try {
-      const res = await axios.post("http://localhost:5500/auth/signup", data, {
+      const res = await axios.post("https://scoutverse.onrender.com/auth/signup", data, {
         headers: { "Content-Type": "application/json" },
       });
       console.log(res);

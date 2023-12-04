@@ -16,7 +16,6 @@ import Home from './Pages/Home';
 // import UpdateProfile from './Pages/UpdateProfile';
 import Login from './Login';
 import Signup from './SignUp';
-import Posts from './Posts';
 import Popup from './Pages/Popup';
 
 function App() {

@@ -63,7 +63,7 @@ const Upload = () => {
       };
 
       // Make an API call to send the image URL to the backend
-      const response = await axios.post("http://localhost:5500/auth/upload/image", def);
+      const response = await axios.post("https://scoutverse.onrender.com/auth/upload/image", def);
 
       // Handle the response from the backend
       console.log("Save operation complete", response.data);
